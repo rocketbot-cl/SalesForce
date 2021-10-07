@@ -62,8 +62,62 @@ try:
     if (module == "getListResources"):
 
         resultList = salesforce_I.getListResources()
+
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, resultList)
+    
+    if (module == "getListObjects"):
+
+        resource = GetParams("resource")
+
+        resultListObjects = salesforce_I.getListObjects(resource)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultListObjects)
+
+    if (module == "getMetadata"):
+
+        resource = GetParams("resource")
+        theObject = GetParams("theObject")
+
+        resultMetadata = salesforce_I.getListObjects(resource, theObject)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultMetadata)
+
+    if (module == "createRecord"):
+
+        resource = GetParams("resource")
+        theObject = GetParams("theObject")
+        data = GetParams("data")
+
+        resultCreation = salesforce_I.createRecord(resource, theObject, data)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultCreation)
+
+    if (module == "updateRecord"):
+
+        resource = GetParams("resource")
+        theObject = GetParams("theObject")
+        record = GetParams("record")
+        data = GetParams("data")
+
+        resultUpdate = salesforce_I.updateRecord(resource, theObject, record, data)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultUpdate)
+
+    if (module == "deleteRecord"):
+
+        resource = GetParams("resource")
+        theObject = GetParams("theObject")
+        record = GetParams("record")
+
+        resultDelete = salesforce_I.deleteRecord(resource, theObject, record)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultDelete)
 
 except Exception as e:
     print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
