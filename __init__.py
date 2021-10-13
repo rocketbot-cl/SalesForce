@@ -80,7 +80,7 @@ try:
         resource = GetParams("resource")
         theObject = GetParams("theObject")
 
-        resultMetadata = salesforce_I.getListObjects(resource, theObject)
+        resultMetadata = salesforce_I.getMetadata(resource, theObject)
 
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, resultMetadata)
@@ -91,11 +91,18 @@ try:
         theObject = GetParams("theObject")
         data = GetParams("data")
 
-        resultCreation = salesforce_I.createRecord(resource, theObject, data)
+
+        data = data.replace("'", "\"")
 
         whereToStore = GetParams("whereToStore")
-        SetVar(whereToStore, resultCreation)
+        SetVar(whereToStore, False)
 
+        # data = json.dumps(data)
+
+        resultCreation = salesforce_I.createRecord(resource, theObject, data)
+
+        SetVar(whereToStore, resultCreation)
+    
     if (module == "updateRecord"):
 
         resource = GetParams("resource")
@@ -103,9 +110,13 @@ try:
         record = GetParams("record")
         data = GetParams("data")
 
-        resultUpdate = salesforce_I.updateRecord(resource, theObject, record, data)
+        data = data.replace("'", "\"")
 
         whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, False)
+
+        resultUpdate = salesforce_I.updateRecord(resource, theObject, record, data)
+
         SetVar(whereToStore, resultUpdate)
 
     if (module == "deleteRecord"):
@@ -118,6 +129,18 @@ try:
 
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, resultDelete)
+
+    if (module == "queryOnRecord"):
+
+        resource = GetParams("resource")
+        theObject = GetParams("theObject")
+        record = GetParams("record")
+        query = GetParams("query")
+
+        resultQuery = salesforce_I.queryOnRecord(resource, theObject, record, query)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, resultQuery)
 
 except Exception as e:
     print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
