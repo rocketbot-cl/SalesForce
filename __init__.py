@@ -125,9 +125,11 @@ try:
         theObject = GetParams("theObject")
         record = GetParams("record")
 
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, False)
+
         resultDelete = salesforce_I.deleteRecord(resource, theObject, record)
 
-        whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, resultDelete)
 
     if (module == "queryOnRecord"):
@@ -137,9 +139,11 @@ try:
         record = GetParams("record")
         query = GetParams("query")
 
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, False)
+
         resultQuery = salesforce_I.queryOnRecord(resource, theObject, record, query)
 
-        whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, resultQuery)
 
 except Exception as e:
