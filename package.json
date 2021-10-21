@@ -526,8 +526,8 @@
                             "en": "Data to assign to the record:"
                         },
                         "help": {
-                            "es": "{\"campo\": \"valor\"}. JSON.",
-                            "en": "{\"field\": \"value\"}. JSON."
+                            "es": "{'campo': 'valor'}.",
+                            "en": "{'field': 'value'}."
                         },
                         "id": "data",
                         "css": "col-md-6"
@@ -743,8 +743,8 @@
                             "en": "Fields:"
                         },
                         "help": {
-                            "es": "Cuenta,Nombre,Fecha",
-                            "en": "Account,Name,Date"
+                            "es": "Cuenta,Nombre,Fecha | Dejar vacio para traer todos.",
+                            "en": "Account,Name,Date | Leave empty to bring all fields."
                         },
                         "id": "query",
                         "css": "col-md-6"

@@ -62,18 +62,30 @@ try:
     if (module == "getListResources"):
 
         resultList = salesforce_I.getListResources()
+        resultList = eval(resultList)
+        realResult = []
+
+        for each in resultList:
+            realResult.append(each)
 
         whereToStore = GetParams("whereToStore")
-        SetVar(whereToStore, resultList)
+        SetVar(whereToStore, realResult)
     
     if (module == "getListObjects"):
 
         resource = GetParams("resource")
 
         resultListObjects = salesforce_I.getListObjects(resource)
+        resultListObjects = resultListObjects.replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
+        resultListObjects = eval(resultListObjects)
+        
+        realResult = []
+
+        for each in resultListObjects["sobjects"]:
+            realResult.append(each["name"])
 
         whereToStore = GetParams("whereToStore")
-        SetVar(whereToStore, resultListObjects)
+        SetVar(whereToStore, realResult)
 
     if (module == "getMetadata"):
 
@@ -81,9 +93,15 @@ try:
         theObject = GetParams("theObject")
 
         resultMetadata = salesforce_I.getMetadata(resource, theObject)
+        resultMetadata = resultMetadata.replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
+        resultMetadata = eval(resultMetadata)
+        realResult = []
+
+        for each in resultMetadata["recentItems"]:
+            realResult.append(each)
 
         whereToStore = GetParams("whereToStore")
-        SetVar(whereToStore, resultMetadata)
+        SetVar(whereToStore, realResult)
 
     if (module == "createRecord"):
 
@@ -91,13 +109,10 @@ try:
         theObject = GetParams("theObject")
         data = GetParams("data")
 
-
         data = data.replace("'", "\"")
 
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, False)
-
-        # data = json.dumps(data)
 
         resultCreation = salesforce_I.createRecord(resource, theObject, data)
 

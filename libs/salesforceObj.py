@@ -112,8 +112,10 @@ class SalesforceObj:
             "Authorization" : f"Bearer {self.accessToken}",
             "X-PrettyPrint" : "1"
         }
-
-        r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/{record}?fields={query}", headers=headers)
+        if query != "":
+            r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/{record}?fields={query}", headers=headers)
+        else:
+            r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/{record}", headers=headers)
 
         if (r.status_code == 200):
             return r.content.decode()
