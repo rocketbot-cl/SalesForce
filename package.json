@@ -5,10 +5,10 @@
     "version":"0.1.0",
     "license": "MIT",
     "homepage":"http://rocketbot.co/",
-    "linux": false,
+    "linux": true,
     "windows":true,
-    "mac":false,
-    "docker":false,
+    "mac":true,
+    "docker":true,
     "name": "Salesforce",
     "dependencies": {
         "requests": "2.26.0"
@@ -145,10 +145,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -194,10 +194,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -260,10 +260,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -343,10 +343,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -443,10 +443,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -560,10 +560,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -660,10 +660,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         },
         {
             "en": {
@@ -777,10 +777,10 @@
             "options": false,
             "father": "module",
             "group": "scripts",
-            "linux": false,
+            "linux": true,
             "windows":true,
-            "mac":false,
-            "docker":false
+            "mac":true,
+            "docker":true
         }
     ]
 }
