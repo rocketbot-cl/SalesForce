@@ -15,9 +15,9 @@ Before using this module, you will need from SalesForce:
 
  * Username.
  * Password.
- * Consumer Key (obtains from App Manager).
- * Consumer Secret (obtains from App Manager).
- * Security Token (obtains from My Personal Information).
+ * Consumer Key (obtains from App Manager | Setup -> App Manager -> "View" to your API app).
+ * Consumer Secret (obtains from App Manager | Setup -> App Manager -> "View" to your API app).
+ * Security Token (obtains from My Personal Information | Profile -> Settings -> Reset My Security Token).
 
 ## Overview
 
