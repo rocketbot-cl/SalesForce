@@ -62,9 +62,7 @@ try:
     if (module == "getListResources"):
 
         resultList = salesforce_I.getListResources()
-        resultList = eval(resultList)
         realResult = []
-
         for each in resultList:
             realResult.append(each)
 
@@ -76,8 +74,8 @@ try:
         resource = GetParams("resource")
 
         resultListObjects = salesforce_I.getListObjects(resource)
-        resultListObjects = resultListObjects.replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
-        resultListObjects = eval(resultListObjects)
+        #resultListObjects = str(resultListObjects).replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
+        #resultListObjects = eval(resultListObjects)
         
         realResult = []
 
@@ -93,8 +91,8 @@ try:
         theObject = GetParams("theObject")
 
         resultMetadata = salesforce_I.getMetadata(resource, theObject)
-        resultMetadata = resultMetadata.replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
-        resultMetadata = eval(resultMetadata)
+        # resultMetadata = resultMetadata.replace("false", "\"false\"").replace("true", "\"true\"").replace("null", "\"null\"")
+        # resultMetadata = eval(resultMetadata)
         realResult = []
 
         for each in resultMetadata["recentItems"]:
@@ -109,7 +107,7 @@ try:
         theObject = GetParams("theObject")
         data = GetParams("data")
 
-        data = data.replace("'", "\"")
+        data = data.replace("'", "\"").encode()
 
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, False)
@@ -125,7 +123,7 @@ try:
         record = GetParams("record")
         data = GetParams("data")
 
-        data = data.replace("'", "\"")
+        data = data.replace("'", "\"").encode()
 
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, False)
@@ -148,7 +146,7 @@ try:
         SetVar(whereToStore, resultDelete)
 
     if (module == "queryOnRecord"):
-
+        
         resource = GetParams("resource")
         theObject = GetParams("theObject")
         record = GetParams("record")

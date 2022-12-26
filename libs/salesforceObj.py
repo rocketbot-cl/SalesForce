@@ -20,9 +20,7 @@ class SalesforceObj:
                     "password":f"{password}{token}"}
 
             r = requests.post(f"https://{domain}.salesforce.com/services/oauth2/token", data=data)
-
-            a = eval(r.content.decode())
-
+            a = r.json()
             self.accessToken = a["access_token"]
             
 
@@ -33,11 +31,11 @@ class SalesforceObj:
         }
 
         r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/", headers=headers)
-
+        
         if (r.status_code == 200):
-            return r.content.decode()
+            return r.json()
         else:
-            return False
+            raise Exception(r.json()[0].get('message'))
 
     def getListObjects(self, resource):
         headers = {
@@ -48,9 +46,9 @@ class SalesforceObj:
         r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/", headers=headers)
 
         if (r.status_code == 200):
-            return r.content.decode()
+            return r.json()
         else:
-            return False
+            raise Exception(r.json()[0].get('message'))
 
     def getMetadata(self, resource, theObject):
         headers = {
@@ -61,9 +59,9 @@ class SalesforceObj:
         r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/", headers=headers)
 
         if (r.status_code == 200):
-            return r.content.decode()
+            return r.json()
         else:
-            return False
+            raise Exception(r.json()[0].get('message'))
 
     def createRecord(self, resource, theObject, data):
         headers = {
@@ -75,9 +73,9 @@ class SalesforceObj:
         r = requests.post(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/", headers=headers, data=data)
 
         if (r.status_code == 201):
-            return r.content.decode()
-        
-        raise Exception (r.json()[0]["message"])
+            return r.json()
+        else:
+            raise Exception(r.json()[0].get('message'))
 
     def updateRecord(self, resource, theObject, record, data):
         headers = {
@@ -91,7 +89,7 @@ class SalesforceObj:
         if (r.status_code == 204 or r.status_code == 201):
             return True
         
-        raise Exception (r.json()[0]["message"])
+        raise Exception(r.json()[0].get('message'))
 
     def deleteRecord(self, resource, theObject, record):
         headers = {
@@ -104,7 +102,7 @@ class SalesforceObj:
         if (r.status_code == 204):
             return True
         
-        raise Exception (r.json()[0]["message"])
+        raise Exception(r.json()[0].get('message'))
 
     def queryOnRecord(self, resource, theObject, record, query):
 
@@ -118,7 +116,7 @@ class SalesforceObj:
             r = requests.get(f"https://{self.domain}.salesforce.com/services/data/v52.0/{resource}/{theObject}/{record}", headers=headers)
 
         if (r.status_code == 200):
-            return r.content.decode()
+            return r.json()
         
-        raise Exception (r.json()[0]["message"])
+        raise Exception(r.json()[0].get('message'))
 
