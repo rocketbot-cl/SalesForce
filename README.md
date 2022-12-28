@@ -6,18 +6,24 @@
   
 Interact with the Salesforce's ecosystem.  
 
-## Howto install this module
+## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+
+
 ## How to use this module
   
 Before using this module, you will need from SalesForce:
 
  * Username.
  * Password.
- * Consumer Key (obtains from App Manager | Setup -> App Manager -> "View" to your API app).
- * Consumer Secret (obtains from App Manager | Setup -> App Manager -> "View" to your API app).
- * Security Token (obtains from My Personal Information | Profile -> Settings -> Reset My Security Token).
+ * 
+Consumer Key (obtains from App Manager | Setup -> App Manager -> "View" to your API app).
+ * Consumer Secret (obtains 
+from App Manager | Setup -> App Manager -> "View" to your API app).
+ * Security Token (obtains from My Personal 
+Information | Profile -> Settings -> Reset My Security Token).
+
 
 ## Overview
 
@@ -25,10 +31,10 @@ Before using this module, you will need from SalesForce:
 1. Connects to Salesforce  
 Enable the conection to Salesforce
 
-2. Get resources' list  
+2. Get resources list  
 Obtains the list of resources from Salesforce
 
-3. Get object' list  
+3. Get objects list  
 Obtains the list of objects from Salesforce
 
 4. Get metadata  
@@ -44,14 +50,18 @@ Allows you to update a record in SalesForce
 Allows you to delete a record in SalesForce
 
 8. Query of fields  
-Allows you to get fields from a record in SalesForce
-### Updates
+Allows you to get fields from a record in SalesForce  
+
+
 
 
 ----
 ### OS
 
 - windows
+- mac
+- linux
+- docker
 
 ### Dependencies
 - [**requests**](https://pypi.org/project/requests/)
